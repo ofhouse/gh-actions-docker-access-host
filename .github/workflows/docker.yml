@@ -8,6 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Docker version
+        run: docker info
+
       - name: yarn install
         run: yarn install --frozen-lockfile --check-files
 

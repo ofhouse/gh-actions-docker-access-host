@@ -15,10 +15,6 @@ function createDeferred() {
 }
 
 function getLocalIpAddressFromHost() {
-  if (process.env.HOST_IP) {
-    return process.env.HOST_IP;
-  }
-
   const nets = networkInterfaces();
   const results = Object.create(null); // or just '{}', an empty object
 
@@ -37,7 +33,11 @@ function getLocalIpAddressFromHost() {
 
   console.log('IP Adresses found:', JSON.stringify(results, null, 2));
 
-  return results['en0'][0];
+  if (process.env.HOST_IP) {
+    return process.env.HOST_IP;
+  } else {
+    return results['en0'][0];
+  }
 }
 
 async function runDockerContainer() {
