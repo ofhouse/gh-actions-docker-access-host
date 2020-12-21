@@ -1,0 +1,17 @@
+{
+  "name": "gh-actions-docker-access-host",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Felix Haus",
+  "license": "MIT",
+  "scripts": {
+    "build": "ncc build client.js -o client",
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.26.1"
+  }
+}
