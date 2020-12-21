@@ -33,10 +33,15 @@ function getLocalIpAddressFromHost() {
 
   console.log('IP Adresses found:', JSON.stringify(results, null, 2));
 
+  // Get the first address we find
+  for (const [, addresses] of Object.entries(results)) {
+    for (address of addresses) {
+      return address;
+    }
+  }
+
   if (process.env.HOST_IP) {
     return process.env.HOST_IP;
-  } else {
-    return results['en0'][0];
   }
 }
 
